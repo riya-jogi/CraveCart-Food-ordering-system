@@ -1,0 +1,33 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md max-w-4xl mx-auto text-center">
+
+    <!-- Icon -->
+    <div class="mx-auto bg-orange-100 dark:bg-orange-900/50 p-4 rounded-full mb-4 w-fit">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+    </div>
+
+    <h1 class="text-3xl font-bold mb-2 text-gray-800 dark:text-white">About YumWheels</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">Your ultimate destination for hunger cravings!</p>
+    
+    <div class="text-gray-700 dark:text-gray-200 space-y-4 leading-relaxed max-w-2xl mx-auto">
+        <p>
+            Welcome to YumWheels! This website is a student mini-project designed to showcase the fundamentals of web application development using modern technologies. It's a demonstration of a complete, end-to-end food ordering system built with passion and a focus on learning.
+        </p>
+    
+        <div>
+            <h2 class="text-2xl font-semibold mt-6 mb-2 text-orange-500">Our Mission</h2>
+            <p>
+                Our mission is simple: to create a seamless, user-friendly, and efficient food ordering experience. While YumWheels is a demonstration project, it is built with the core principles of real-world applications in mind, focusing on functionality, a clean user interface, and robust backend logic.
+            </p>
+        </div>
+        
+        <p class="pt-4">
+            Thank you for visiting. Feel free to browse the menu, create an account, and test out the ordering process!
+        </p>
+    </div>
+</div>
+{% endblock %}
+

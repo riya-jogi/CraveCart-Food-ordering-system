@@ -1,0 +1,65 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Your Shopping Cart</h1>
+    
+    {% if cart_items %}
+    <div class="overflow-x-auto">
+        <table class="w-full text-left">
+            <thead>
+                <tr class="border-b dark:border-gray-600">
+                    <th class="py-3 px-4 font-semibold text-gray-700 dark:text-gray-300">ITEM</th>
+                    <th class="py-3 px-4 font-semibold text-gray-700 dark:text-gray-300 text-center">PRICE</th>
+                    <th class="py-3 px-4 font-semibold text-gray-700 dark:text-gray-300 text-center">QUANTITY</th>
+                    <th class="py-3 px-4 font-semibold text-gray-700 dark:text-gray-300 text-center">TOTAL</th>
+                    <th class="py-3 px-4 font-semibold text-gray-700 dark:text-gray-300 text-center">ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                    <td class="py-4 px-4 flex items-center">
+                        <img src="{{ item.food_item.image_url }}" alt="{{ item.food_item.name }}" class="w-16 h-16 object-cover rounded-md mr-4">
+                        <div>
+                            <p class="font-bold text-gray-800 dark:text-white">{{ item.food_item.name }}</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">{{ item.food_item.category.name }}</p>
+                        </div>
+                    </td>
+                    <td class="py-4 px-4 text-center text-gray-700 dark:text-gray-300">₹{{ item.food_item.price }}</td>
+                    <td class="py-4 px-4 text-center">
+                        <div class="flex items-center justify-center space-x-3">
+                            <a href="{% url 'decrease_cart_item' item.id %}" class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg">-</a>
+                            <span class="font-semibold text-lg text-gray-800 dark:text-white">{{ item.quantity }}</span>
+                            <a href="{% url 'increase_cart_item' item.id %}" class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg">+</a>
+                        </div>
+                    </td>
+                    <td class="py-4 px-4 text-center font-semibold text-gray-800 dark:text-white">₹{{ item.get_total }}</td>
+                    <td class="py-4 px-4 text-center">
+                        <a href="{% url 'remove_from_cart' item.id %}" class="text-red-500 hover:text-red-700 font-semibold">Remove</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mt-8 flex justify-end items-center">
+        <div class="text-right">
+            <p class="text-2xl font-bold text-gray-800 dark:text-white">Grand Total: <span class="text-orange-500">₹{{ total_price }}</span></p>
+            <a href="{% url 'checkout' %}" class="mt-4 inline-block bg-green-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-600 transition-colors">
+                Proceed to Checkout
+            </a>
+        </div>
+    </div>
+    {% else %}
+    <div class="text-center py-16">
+        <h2 class="text-2xl font-semibold mb-2 text-gray-800 dark:text-white">Your cart is empty!</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">Looks like you haven't added anything to your cart yet.</p>
+        <a href="{% url 'home' %}" class="bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600">
+            Start Shopping
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
