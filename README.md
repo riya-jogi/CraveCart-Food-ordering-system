@@ -76,6 +76,6 @@ Follow these steps to set up the project locally:
 4.  Proceed to checkout to place an order.
 5.  Access the **Admin Panel** at `http://127.0.0.1:8000/admin/` to manage the system (requires superuser credentials).
 
-## Authors
+## Author
 
 -   Riya Jogi
