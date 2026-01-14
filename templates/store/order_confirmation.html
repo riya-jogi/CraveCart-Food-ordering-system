@@ -13,7 +13,7 @@
                 <h2 class="text-xl font-semibold">Order #{{ order.id }}</h2>
                 <p class="text-sm text-gray-500">Date: {{ order.created_at|date:"F d, Y" }}</p>
             </div>
-            <div class="text-2xl font-bold text-orange-500">YumWheels</div>
+            <div class="text-2xl font-bold text-orange-500">CraveCart</div>
         </div>
 
         <!-- Shipping Address -->
@@ -57,13 +57,14 @@
 
     <!-- Action Buttons -->
     <div class="text-center mt-8">
-        <button onclick="window.print()" class="bg-blue-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors">
+        <button onclick="window.print()"
+            class="bg-blue-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-600 transition-colors">
             Print Bill
         </button>
-        <a href="{% url 'home' %}" class="ml-4 bg-gray-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-600 transition-colors">
+        <a href="{% url 'home' %}"
+            class="ml-4 bg-gray-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-600 transition-colors">
             Back to Home
         </a>
     </div>
 </div>
 {% endblock %}
-
